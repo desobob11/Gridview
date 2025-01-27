@@ -21,3 +21,7 @@
 /aeso-dash/npm-debug.log*
 /aeso-dash/yarn-debug.log*
 /aeso-dash/yarn-error.log*
+
+__pycache__
+/server/__pycache__
+.DS_Store
