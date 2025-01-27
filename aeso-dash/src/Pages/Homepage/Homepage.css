@@ -1,0 +1,72 @@
+
+
+:root {
+    --aeso_base_grey: #121212;
+    --aeso_nav_grey: #1f1f1f;
+    --aeso_nav_green: #018786;
+    --aeso_nav_green_secondary: #03dAc6;
+    --aes_nav_offwhite: #FAF9F6;
+  }
+
+
+
+.aeso-base-div {
+    background-color: var(--aeso_base_grey);
+    height: 100vh;
+    color: white;
+    padding-top: 10%;
+    overflow: auto;
+    display: grid;
+
+}
+
+.aeso-footer {
+
+    height:1vh;
+    background-color: var(--aeso_base_grey);
+
+}
+
+.font-poppins-nav-logo {
+    font-family: 'poppins' sans-serif !important;
+    font-weight:900 !important;
+    font-style: italic !important;
+    color:white;
+}
+
+
+
+.default-container {
+    display:contents;
+}
+
+.text-standard {
+    font-family: 'poppins' sans-serif !important;
+    font-weight:600 !important;
+    color:lightgray;
+    font-size:medium;
+}
+
+.text-header {
+    font-family: 'poppins' sans-serif !important;
+    font-weight:600 !important;
+    color:lightgray;
+    font-size:xx-large;
+    margin-bottom: 7%;
+}
+
+.text-figtitle {
+    font-family: 'poppins' sans-serif !important;
+    font-weight: 600 !important;
+    font-style: italic;
+    color: lightgray;
+    font-size: x-large;
+    margin-bottom: 7%;
+    text-align: center;
+    margin-bottom:10px;
+}
+
+.standard-textbox-left {
+    width: 30%;
+    margin-left: 15%;
+}

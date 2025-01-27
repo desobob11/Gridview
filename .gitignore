@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/aeso-dash/node_modules
+/aeso-dash/.pnp
+/aeso-dash/.pnp.js
+
+# testing
+/aeso-dash/coverage
+
+# production
+/aeso-dash/build
+
+# misc
+/aeso-dash/.DS_Store
+/aeso-dash/.env.local
+/aeso-dash/.env.development.local
+/aeso-dash/.env.test.local
+/aeso-dash/.env.production.local
+
+/aeso-dash/npm-debug.log*
+/aeso-dash/yarn-debug.log*
+/aeso-dash/yarn-error.log*
