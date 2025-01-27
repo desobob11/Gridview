@@ -12,9 +12,9 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 const navigation = [
 
 
-  { name: 'Home', href: '#', current: true },
-  { name: 'Series', href: '#', current: false },
-  { name: 'Assets', href: '#', current: false },
+  { name: 'Home', href: '/home', current: window.location.href.includes("Home") ? true : false },
+  { name: 'Series', href: '', current: window.location.href.includes("Series") ? true : false },
+  { name: 'Assets', href: 'assets', current: window.location.href.includes("assets") ? true : false },
 ]
 
 function classNames(...classes) {
@@ -23,7 +23,7 @@ function classNames(...classes) {
 
 export default function Navbar() {
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="font-sans bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -36,13 +36,7 @@ export default function Navbar() {
             </DisclosureButton>
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-            <div className="flex shrink-0 items-center">
-              <img
-                alt="Your Company"
-                src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-                className="h-8 w-auto"
-              />
-            </div>
+
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
                 {navigation.map((item) => (
@@ -79,7 +73,7 @@ export default function Navbar() {
                   <span className="sr-only">Open user menu</span>
                   <img
                     alt=""
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    src="https://profiles.ucalgary.ca/sites/default/files/styles/ucws_profile_picture/public/2022-07/JRC%203x3_0.jpeg?itok=YGf0baab"
                     className="size-8 rounded-full"
                   />
                 </MenuButton>

@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form'
 import { useEffect, useState } from 'react';
 import {ResponsiveLine} from '@nivo/line'
 import './Assets.css'
-import Navbar from '../../Components/Navbar/Navbar';
+import Navbar from '../../Components/tail_Navbar/tail_Navbar';
 import Fig_PoolPrice from '../../Components/Fig_PoolPrice';
 
 
