@@ -20,8 +20,8 @@ PORT = 8080
 '''
     Get API key from environment variables
 '''
-API_KEY = os.environ["AESO_API_KEY"]
-
+API_KEY = os.environ["AESO_PRIM_KEY"]
+API_OLD_KEY = os.environ["AESO_OLD_KEY"]
 
 '''
     Start flask app, allow CORS
@@ -50,9 +50,9 @@ def RESP_poolPrice():
     API call for pool price, helper for above function
 '''
 def poolPrice(startDate, endDate):
-    headers_ = { "Content-Type": "application/json",  "X-API-Key": API_KEY}
+    headers_ = { "Content-Type": "application/json",  "API-Key": API_KEY}
     
-    url_ = f"https://api.aeso.ca/report/v1.1/price/poolPrice?startDate={startDate}&endDate={endDate}"
+    url_ = f"https://apimgw.aeso.ca/public/poolprice-api/v1.1/price/poolPrice?startDate={startDate}&endDate={endDate}"
     result = requests.get(url=url_, headers=headers_)
     cont = result.content
     data = json.loads(cont.decode('utf-8'))["return"]["Pool Price Report"]
@@ -79,8 +79,8 @@ def RES_current_gen_by_fuel():
 '''
     API call for current generation by fuel type, helper for above function
 '''
-def currentGenByFuel():
-    headers_ = { "Content-Type": "application/json",  "X-API-Key": API_KEY}
+def currentGenByFuel():     # old API
+    headers_ = { "Content-Type": "application/json",  "X-API-Key": API_OLD_KEY} 
     
     url_ = f"https://api.aeso.ca/report/v1/csd/generation/assets/current"
     result = requests.get(url=url_, headers=headers_)
