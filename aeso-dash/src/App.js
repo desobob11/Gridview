@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './App.css';
+import './index.css';
 import React, { useState, useEffect, Box } from 'react';
 import { Helmet } from 'react-helmet';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';

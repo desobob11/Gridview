@@ -4,10 +4,11 @@ import Form from 'react-bootstrap/Form'
 import { useEffect, useState } from 'react';
 import {ResponsiveLine} from '@nivo/line'
 import './Homepage.css'
-import Navbar from '../../Components/Navbar/Navbar';
+//import Navbar from '../../Components/Navbar/Navbar';
 import Fig_PoolPrice from '../../Components/Fig_PoolPrice';
 import Fig_Treemap from '../../Components/Treemap/Fig_Treemap';
 import Fig_Donut from '../../Components/Donut/Fig_Donut';
+import Navbar from '../../Components/tail_Navbar/tail_Navbar';
 
 export default function Homepage() {
 
