@@ -12,14 +12,26 @@ export default function Assets() {
 
 
 
-    useEffect(() => {
+  const [today, setToday] = useState(new Date().toLocaleDateString('fr-CA', 'America/Calgary'))
+  const [assetListData, setAssetListData] = useState([])
 
-    }, []);
+
+  useEffect(() => {
+      setAssetListData();
+  }, [,today]);
 
 
-    const todayPoolPrice = () => {
-
-    }
+    const assetList = () => {
+      const options = {
+          method: "GET",
+          headers: { "Content-Type": "application/json"},
+      };
+      fetch(`https://apimgw.aeso.ca/public/assetlist-api/v1/assetlist`, options)
+        .then(response => response.json())
+        .then(result => {
+              setPoolPriceData([{id: "asset_ID", data: result["data"]}])
+        });
+  }
 
     return (
         <div class="default-container">
