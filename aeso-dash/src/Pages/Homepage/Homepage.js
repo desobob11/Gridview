@@ -10,6 +10,11 @@ import Fig_Treemap from '../../Components/Treemap/Fig_Treemap';
 import Fig_Donut from '../../Components/Donut/Fig_Donut';
 import Navbar from '../../Components/tail_Navbar/tail_Navbar';
 
+import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+
+
+
 export default function Homepage() {
 
     const [today, setToday] = useState(new Date().toLocaleDateString('fr-CA', 'America/Calgary'))
@@ -54,9 +59,43 @@ export default function Homepage() {
             });
     }
 
+    return (
+        <>
+          {/*
+            This example requires updating your template:
+    
+            ```
+            <html class="h-full bg-gray-100">
+            <body class="h-full">
+            ```
+          */}
+          <Navbar/>
+          <div className="font-sans min-h-full">
+           
+    
+            <header className="bg-white shadow">
+              <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                <h1 className="text-3xl font-bold tracking-tight text-blue-950">Dashboard</h1>
+              </div>
+            </header>
+            <main>
+              <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
+              <h1 className="text-blue-950">
+                    AESO Dash is a general-purpose dashboarding website for public AESO data.
+                    <p/>
+                    This site is intended to allow public users to easily access and interpet public data related to Alberta's energy markets.
+                    <p/>
 
+            </h1>
+                
+              </div>
+            </main>
+          </div>
+        </>
+      );
 
+/*
     return (
 
 
@@ -83,6 +122,7 @@ export default function Homepage() {
             <div class="aeso-footer"/>
         </div>
     );
+    */
 
 }
 

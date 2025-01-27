@@ -6,6 +6,7 @@
     --aeso_nav_green: #018786;
     --aeso_nav_green_secondary: #03dAc6;
     --aes_nav_offwhite: #FAF9F6;
+    --tailwind_text: #111827;
   }
 
 
@@ -41,10 +42,9 @@
 }
 
 .text-standard {
-    font-family: 'poppins' sans-serif !important;
     font-weight:600 !important;
     color:lightgray;
-    font-size:medium;
+    font-size:larger;
 }
 
 .text-header {
