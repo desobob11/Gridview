@@ -25,48 +25,48 @@ function Ticker(props) {
 
 
 function FuelTypeCard(props) {
-  if (props.loaded) {
-    return (
-      <div className="shrink w-90 h-128 shadow rounded-xl">
-        <div className="flex justify-center text-3xl text-center font-sans text-gray-900">
-          {props.fuelType}
-        </div>
-        <div className={"p-8 flex justify-center align-center  grid grid-cols-2 gap-4 text-2xl text-center font-sans"}>
-          <div className="h-fit  text-xl">
-            Max Capability:
-          </div>
-          <div className="  h-fit text-xl text-gray-900">
-            {props.maxCap}
-          </div>
-          <div className="h-fit text-xl">
-            Net Generation:
-          </div>
-          <div className=" h-fit text-xl text-gray-900">
-            {props.netGen}
-          </div>
-          <div className="h-fit text-xl">
-            Dispatched Contingency Reserve:
-          </div>
-          <div className=" h-fit text-xl text-gray-900">
-            {props.conting}
-          </div>
-
-        </div>
+  // if (props.loaded) {
+  return (
+    <div className="shrink w-90 h-128 shadow rounded-xl">
+      <div className="flex justify-center text-3xl text-center font-sans text-gray-900">
+        {props.fuelType}
       </div>
-
-    );
-  }
-  else {
-    return (
-      <div className="flex justify-center align-middle shadow rounded-xl">
-       <div className={"h-64 text-2xl text-center font-sans"}>
-            <LoadingWheel height={16} width={16}/>
+      <div className={"p-8 flex justify-center align-center  grid grid-cols-2 gap-4 text-2xl text-center font-sans"}>
+        <div className="h-fit  text-xl">
+          Max Capability:
         </div>
-      </div>
+        <div className="  h-fit text-xl text-gray-900">
+          {props.maxCap}
+        </div>
+        <div className="h-fit text-xl">
+          Net Generation:
+        </div>
+        <div className=" h-fit text-xl text-gray-900">
+          {props.netGen}
+        </div>
+        <div className="h-fit text-xl">
+          Dispatched Contingency Reserve:
+        </div>
+        <div className=" h-fit text-xl text-gray-900">
+          {props.conting}
+        </div>
 
-    );
-    
-  }
+      </div>
+    </div>
+
+  );
+  // }
+  // else {
+  //   return (
+  //     <div className="flex justify-center align-middle shadow rounded-xl">
+  //      <div className={"h-64 text-2xl text-center font-sans"}>
+  //          <LoadingWheel height={16} width={16}/>
+  //      </div>
+  //    </div>
+
+  //  );
+
+  //}
 
 }
 
@@ -106,19 +106,11 @@ export default function SupplyDemand() {
   }
 
   const [tickerList, setTickerList] = useState(
-    Object.values(tickers).map(x => <Ticker title={x} text={<LoadingWheel width={8} height={8}/>} />)
+    Object.values(tickers).map(x => <Ticker title={x} text={<LoadingWheel width={8} height={8} />} />)
 
   );
 
-  const [fuelCardList, setFuelCards] = useState(
-    Object.values(tickers).map(x => <FuelTypeCard
-      fuelType=""
-      maxCap=""
-      netGen=""
-      conting=""
-      loaded={false}
-    />)
-  );
+  const [fuelCardList, setFuelCards] = useState([]);
 
 
   useEffect(() => {
@@ -178,9 +170,12 @@ export default function SupplyDemand() {
           </div>
         </header>
         <main>
-          <div className="flex mt-16 grid grid-cols-3 gap-32 p-32 text-2xl font-bold text-gray-900 px-4 py-6 sm:px-6 lg:px-8">
-            {fuelCardList}
-          </div>
+          {fuelCardList.length === 0 ? <div className="flex mt-16 justify-center align-middle p-32 text-2xl font-bold text-gray-900 px-4 py-6 sm:px-6 lg:px-8">
+            {fuelCardList.length === 0 ? <LoadingWheel height={32} width={32} /> : fuelCardList}
+          </div> :
+            <div className="flex mt-16 grid grid-cols-3 gap-32 p-32 text-2xl font-bold text-gray-900 px-4 py-6 sm:px-6 lg:px-8">
+              {fuelCardList}
+            </div>}
 
         </main>
       </div>
