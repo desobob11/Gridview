@@ -28,27 +28,27 @@ function FuelTypeCard(props) {
   // if (props.loaded) {
   return (
     <div className="shrink w-90 h-128 shadow rounded-xl">
-      <div className="flex justify-center text-3xl text-center font-sans text-gray-900">
+      <div className="flex font-bold justify-center text-3xl text-center font-sans text-gray-900">
         {props.fuelType}
       </div>
       <div className={"p-8 flex justify-center align-center  grid grid-cols-2 gap-4 text-2xl text-center font-sans"}>
         <div className="h-fit  text-xl">
           Max Capability:
         </div>
-        <div className="  h-fit text-xl text-gray-900">
-          {props.maxCap}
+        <div className="h-fit text-xl text-gray-900">
+          {props.maxCap} MW
         </div>
         <div className="h-fit text-xl">
           Net Generation:
         </div>
-        <div className=" h-fit text-xl text-gray-900">
-          {props.netGen}
+        <div className={`h-fit text-xl ${props.textColor}`}>
+          {props.netGen} MW
         </div>
         <div className="h-fit text-xl">
           Dispatched Contingency Reserve:
         </div>
-        <div className=" h-fit text-xl text-gray-900">
-          {props.conting}
+        <div className="h-fit text-xl text-gray-900">
+          {props.conting} MW
         </div>
 
       </div>
@@ -86,6 +86,19 @@ function LoadingWheel(props) {
   );
 }
 
+function processColor(maxCap, netGen) {
+    let ratio = netGen / maxCap;
+    if (ratio >= 0.75) {
+      return "text-green-800";
+    }
+    else if (ratio < 0.75 && ratio >= 0.25) {
+      return "text-yellow-700";
+    }
+    else {
+      return "text-red-700";
+    }
+}
+
 export default function SupplyDemand() {
 
   var supplyDemandData = {};
@@ -99,11 +112,12 @@ export default function SupplyDemand() {
     "total_net_generation": "Net Generation"
   };
 
+  /*
   const fuelCards = {
     "aggregated_maximum_capability": "Max capability",
     "aggregated_net_generation": "Net Generation",
     "aggregated_dispatched_contingency_reserve": "Dispatched Contingency Reserve"
-  }
+  }*/
 
   const [tickerList, setTickerList] = useState(
     Object.values(tickers).map(x => <Ticker title={x} text={<LoadingWheel width={8} height={8} />} />)
@@ -139,6 +153,21 @@ export default function SupplyDemand() {
     setTickerList(temp);
   }
 
+  const loadFuelCards = () => {
+    let temp = [];
+    for (const record of supplyDemandData["generation_data_list"]) {
+        let card = <FuelTypeCard
+                fuelType={record["fuel_type"]}
+                maxCap={record["aggregated_maximum_capability"]}
+                netGen={record["aggregated_net_generation"]}
+                conting={record["aggregated_dispatched_contingency_reserve"]}
+                textColor={processColor(record["aggregated_maximum_capability"], record["aggregated_net_generation"])}
+        />;
+        temp.push(card);
+    }
+    setFuelCards(temp);
+
+  }
 
 
   const currentSupplyDemand = () => {
@@ -151,6 +180,7 @@ export default function SupplyDemand() {
       .then(result => {
         cacheData((result["data"]));
         loadTickers();
+        loadFuelCards();
       });
 
 
@@ -171,7 +201,7 @@ export default function SupplyDemand() {
         </header>
         <main>
           {fuelCardList.length === 0 ? <div className="flex mt-16 justify-center align-middle p-32 text-2xl font-bold text-gray-900 px-4 py-6 sm:px-6 lg:px-8">
-            {fuelCardList.length === 0 ? <LoadingWheel height={32} width={32} /> : fuelCardList}
+            {fuelCardList.length === 0 ? <LoadingWheel height={16} width={16} /> : fuelCardList}
           </div> :
             <div className="flex mt-16 grid grid-cols-3 gap-32 p-32 text-2xl font-bold text-gray-900 px-4 py-6 sm:px-6 lg:px-8">
               {fuelCardList}
