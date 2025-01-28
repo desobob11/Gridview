@@ -90,9 +90,26 @@ def currentGenByFuel():     # old API
     df = df.groupby(["fuel_type"])["net_generation"].sum(numeric_only=True)
     return df.to_dict()
 
+'''
+    Route for getting current generation according to fuel type
+'''
+@app.route("/current_supply_demand/", methods=["GET"])
+@cross_origin()
+def RES_current_supply_demand():
+    data = currentSupplyDemand()
+    resp =  flask.jsonify({"data" : data})
+    return resp
 
-
-
+def currentSupplyDemand():
+        headers_ = { "Content-Type": "application/json",  "API-Key": API_KEY}
+    
+        url_ = f"https://apimgw.aeso.ca/public/currentsupplydemand-api/v1/csd/summary/current"
+        result = requests.get(url=url_, headers=headers_)
+        cont = result.content
+        data = json.loads(cont.decode("utf-8"))["return"]
+        for i in data["generation_data_list"]:
+             i["fuel_type"] = i["fuel_type"].title()
+        return data
 
 
 

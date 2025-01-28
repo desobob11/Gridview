@@ -48,12 +48,25 @@ def poolPrice(startDate, endDate):
 
 
 
+def currentSupplyDemand():
+        headers_ = { "Content-Type": "application/json",  "API-Key": API_KEY}
+    
+        url_ = f"https://apimgw.aeso.ca/public/currentsupplydemand-api/v1/csd/summary/current"
+        result = requests.get(url=url_, headers=headers_)
+        cont = result.content
+
+        data = json.loads(cont.decode("utf-8"))["return"]
+        for i in data["generation_data_list"]:
+             i["fuel_type"] = i["fuel_type"].title()
+        data = json.dumps(data)
+        return data
+
 
 
 
 
 def main():
-    print(poolPrice("2024-01-01", "2024-01-10"))
+    print(currentSupplyDemand())
 
 
 

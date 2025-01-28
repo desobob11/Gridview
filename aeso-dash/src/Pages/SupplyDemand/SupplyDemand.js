@@ -23,6 +23,39 @@ function Ticker(props) {
   );
 }
 
+
+function FuelTypeCard(props) {
+  return (
+    <div className="shrink w-fit h-128 shadow rounded-xl">
+      <div className="text-3xl text-center font-sans text-gray-900">
+      {props.fuelType}
+      </div>
+      <div className={"p-8 align-center content-center grid grid-cols-2 gap-4 text-2xl text-center font-sans"}>
+        <div className="h-fit  text-xl">
+        Max Capability:
+        </div>
+        <div className="  h-fit text-xl text-blue-800">
+        {props.maxCap}MW
+        </div>
+        <div className="h-fit text-xl">
+        Net Generation:
+        </div>
+        <div className=" h-fit text-xl text-blue-800">
+        {props.netGen}MW
+        </div>
+        <div className="h-fit text-xl">
+        Dispatched Contingency Reserve:
+        </div>
+        <div className=" h-fit text-xl text-blue-800">
+        {props.maxCap}MW
+        </div>
+
+      </div>
+    </div>
+
+  );
+}
+
 export default function SupplyDemand() {
 
     var supplyDemandData = {};
@@ -84,7 +117,7 @@ export default function SupplyDemand() {
                  <div className="font-sans min-h-full">
      
      
-                     <header className="bg-white shadow">
+                     <header className="mt-16 w-full fixed bg-white shadow">
                          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                              <h1 className="grid grid-cols-4 gap-4 text-4xl font-bold tracking-tight text-gray-900">
                               {tickerList}
@@ -92,12 +125,29 @@ export default function SupplyDemand() {
                          </div>
                      </header>
                      <main>
-                         <div className="grid grid-flow-row-dense grid-cols-4 grid-rows-1 gap-1 text-2xl font-bold text-gray-900 px-4 py-6 sm:px-6 lg:px-8">
-                             <div className=" relative top-10 left-10 size-128" >
-                      
+                         <div className="flex mt-16 grid grid-cols-3 gap-32 p-32 text-2xl font-bold text-gray-900 px-4 py-6 sm:px-6 lg:px-8">
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
+                              <FuelTypeCard fuelType="Cogeneration" text="Text" color="text-blue-800"/>
                              </div>
-                             
-                         </div>
+
                      </main>
                  </div>
              </>
