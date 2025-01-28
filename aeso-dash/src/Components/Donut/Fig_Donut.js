@@ -8,7 +8,8 @@ import '../../Pages/Homepage/Homepage.css'
 
 
 export default function Fig_Donut(props) {
-
+    
+    const my_colors = ["#08306b", "#08519c", "#2171b5", "#4292c6", "#6baed6", "#9ecae1", "#c6dbef", "#deebf7"];
 
 
     return (
@@ -24,7 +25,7 @@ export default function Fig_Donut(props) {
                 cornerRadius={3}
                 activeOuterRadiusOffset={8}
                 borderWidth={1}
-                colors={{ scheme: 'set3' }}
+                colors={my_colors}
                 borderColor={{
                     from: 'color',
                     modifiers: [
@@ -37,7 +38,7 @@ export default function Fig_Donut(props) {
                 theme={{
                     text: {
                         "fontSize": 12,
-                        "fill": "#FAF9F6",
+                        "fill": "#111827",
                     },
                     "tooltip": {
                         "wrapper": {},
@@ -55,25 +56,25 @@ export default function Fig_Donut(props) {
         
                 }}
                 arcLinkLabelsSkipAngle={10}
-                arcLinkLabelsTextColor="#FAF9F6"
+                arcLinkLabelsTextColor="#111827"
                 arcLinkLabelsThickness={2}
                 arcLabelsSkipAngle={10}
-                arcLabelsTextColor="#121212"
+                arcLabelsTextColor="#111827"
     
                 legends={[
                     {
-                        anchor: 'left',
+                        anchor: 'right',
                         direction: 'column',
                         justify: false,
-                        translateX: -80,
+                        translateX: 20,
                         translateY: 0,
-                        itemsSpacing: 20,
-                        itemWidth: 100,
+                        itemsSpacing: 0,
+                        itemWidth: 80,
                         itemHeight: 18,
-                        itemTextColor: '#999',
+                        itemTextColor: '#111827',
                         itemDirection: 'right-to-left',
                         itemOpacity: 1,
-                        symbolSize: 18,
+                        symbolSize: 8,
                         symbolShape: 'circle',
       
                     }

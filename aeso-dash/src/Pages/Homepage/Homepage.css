@@ -43,7 +43,7 @@
 
 .text-standard {
     font-weight:600 !important;
-    color:lightgray;
+    color:--tailwind_text;
     font-size:larger;
 }
 
@@ -59,7 +59,7 @@
     font-family: 'poppins' sans-serif !important;
     font-weight: 600 !important;
     font-style: italic;
-    color: lightgray;
+    color: --tailwind_text;
     font-size: x-large;
     margin-bottom: 7%;
     text-align: center;
@@ -68,5 +68,6 @@
 
 .standard-textbox-left {
     width: 30%;
-    margin-left: 15%;
+    margin-left: 10%;
 }
+

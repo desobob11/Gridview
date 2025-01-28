@@ -9,11 +9,11 @@ import '../Pages/Homepage/Homepage.css'
 
 export default function Fig_PoolPrice(props) {
 
-
+    const my_colors = ["#08306b", "#08519c", "#2171b5", "#4292c6", "#6baed6", "#9ecae1", "#c6dbef", "#deebf7"];
 
 
     return (
-        <Container style={{height:"40vh", width:"60vw", marginTop:"10vh"}}>
+        <Container style={{height:"40vh", width:"40vw", marginTop:"10vh"}}>
             <h1  class="text-figtitle">{props.title}</h1>
             <ResponsiveLine 
         data={props.figData}
@@ -52,7 +52,7 @@ export default function Fig_PoolPrice(props) {
         areaOpacity={0.2}
         enableGridY={true}
         enableGridX={true}
-        colors={{ scheme: 'accent' }}
+        colors={my_colors}
         enablePoints={false}
         pointSize={10}
         pointColor={{ theme: 'background' }}
@@ -63,9 +63,9 @@ export default function Fig_PoolPrice(props) {
         enableTouchCrosshair={true}
         useMesh={true}
         theme = {{
-            text: {
+            "text": {
                 "fontSize": 12,
-                "fill": "#FAF9F6",
+                "fill": "#111827",
             },
             "grid": {
                 "line": {
@@ -85,7 +85,35 @@ export default function Fig_PoolPrice(props) {
                 "table": {},
                 "tableCell": {},
                 "tableCellValue": {}
-            }
+            },
+            "axis": {
+                "domain": {
+                    "line": {
+                        "stroke": "#111827",
+                        "strokeWidth": 1
+                    }
+                },
+                "legend": {
+                    "text": {
+                        "fontSize": 16,
+                        "fill": "#111827",
+                        "outlineWidth": 0,
+                        "outlineColor": "transparent"
+                    }
+                },
+                "ticks": {
+                    "line": {
+                        "stroke": "#111827",
+                        "strokeWidth": 1
+                    },
+                    "text": {
+                        "fontSize": 11,
+                        "fill": "#111827",
+                        "outlineWidth": 0,
+                        "outlineColor": "transparent"
+                    }
+                }
+            },
 
 
         }}
