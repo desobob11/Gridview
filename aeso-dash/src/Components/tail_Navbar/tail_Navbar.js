@@ -15,6 +15,7 @@ const navigation = [
   { name: 'Home', href: '/home', current: window.location.href.includes("Home") ? true : false },
   { name: 'Series', href: '', current: window.location.href.includes("Series") ? true : false },
   { name: 'Assets', href: 'assets', current: window.location.href.includes("assets") ? true : false },
+  { name: 'Supply and Demand', href: 'supplydemand', current: window.location.href.includes("supplydemand") ? true : false },
 ]
 
 function classNames(...classes) {

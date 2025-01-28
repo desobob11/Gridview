@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Homepage from './Pages/Homepage/Homepage';
 import Assets from './Pages/Assets/Assets';
+import SupplyDemand from './Pages/SupplyDemand/SupplyDemand';
 
 //import UsersPage from './Components/Users';
 
@@ -21,6 +22,7 @@ function App() {
 
       <Routes>
       <Route path="/home" element={<Homepage/>}/>
+      <Route path="/supplydemand" element={<SupplyDemand/>}/>
         <Route path="/assets" element={<Assets/>}/>
         <Route path="/" element={<Navigate to="/home" replace={true} />}/>
       </Routes>
