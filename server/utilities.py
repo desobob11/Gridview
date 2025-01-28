@@ -11,3 +11,10 @@ def clean_dates(data: dict, interval: str):
     
     return df.to_dict()
 
+def add_index(data):
+    df = pd.DataFrame(data)
+    for i in range(len(df)):
+        df.at[i, "id"] = i
+    return df.to_json(orient="records")
+
+

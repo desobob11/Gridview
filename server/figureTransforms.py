@@ -46,3 +46,10 @@ def TRANSFORM_line(data: pd.DataFrame, xName: str, yName: str) -> dict:
     return ret
 
 
+def TRANSFORM_table(data: pd.DataFrame) -> dict:
+    ret = []
+    for i in range(len(data)):
+        ret.append(data.iloc[i].to_dict())
+    return ret
+
+

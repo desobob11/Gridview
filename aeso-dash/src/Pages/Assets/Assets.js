@@ -6,20 +6,43 @@ import {ResponsiveLine} from '@nivo/line'
 import './Assets.css'
 import Navbar from '../../Components/tail_Navbar/tail_Navbar';
 import Fig_PoolPrice from '../../Components/Fig_PoolPrice';
+import DataTable from '../../Components/Data_Table/Data_Table';
 
 
 export default function Assets() {
 
 
 
-    useEffect(() => {
+  const [today, setToday] = useState(new Date().toLocaleDateString('fr-CA', 'America/Calgary'))
+  const [assetListData, setAssetListData] = useState([])
+  // make an array that contains the columns for the table
+  const columns = [{ field: 'asset_ID', headerName: 'ID', width: 90 }
+    ,{ field: 'asset_type', headerName: 'Type', width: 150 }
+    ,{ field: 'pool_participant_ID', headerName: 'Pool Participant ID', width: 150 }
+    ,{ field: 'operating_status', headerName: 'Operating Status', width: 150 }]
 
-    }, []);
+
+  useEffect(() => {
+      getAssetList();
+  }, [,today]);
 
 
-    const todayPoolPrice = () => {
-
-    }
+  const getAssetList = () => {
+    const options = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+    };
+    fetch(`http://127.0.0.1:8080/assetList/`, options)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result); // Log the result to inspect the data structure
+            if (result) {
+                setAssetListData(result); // Ensure the data is set correctly
+            } else {
+                console.error("Unexpected data format:", result);
+            }
+        });
+};
 
     return (
         <div class="default-container">
@@ -38,6 +61,7 @@ export default function Assets() {
 
                 </h1>
             </div>
+            <DataTable rows={assetListData} columns={columns} />
           
             </div>
         </div>

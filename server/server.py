@@ -46,6 +46,8 @@ def RESP_poolPrice():
     resp =  flask.jsonify({"data" : TRANSFORM_line(pd.DataFrame(data), "begin_datetime_mpt", "pool_price")})
     return resp
 
+
+
 '''
     API call for pool price, helper for above function
 '''
@@ -59,9 +61,28 @@ def poolPrice(startDate, endDate):
     data = clean_dates(data, "h")
     return data
 
+'''
+    Route for getting asset list
+'''
 
+@app.route("/assetList/", methods=["GET"])
+@cross_origin()
+def RESP_assetList():
+    resp = assetList()
+    return resp
 
+'''
+    API call for asset list, helper for above function
+'''
+def assetList():
+    headers_ = { "Content-Type": "application/json",  "API-Key": API_KEY}
 
+    url_ = f"https://apimgw.aeso.ca/public/assetlist-api/v1/assetlist"
+    result = requests.get(url=url_, headers=headers_)
+    cont = result.content
+    data = json.loads(cont.decode('utf-8'))["return"]
+    data = add_index(data)
+    return data
 
 
 

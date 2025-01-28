@@ -34,16 +34,17 @@ API_KEY = os.environ["AESO_PRIM_KEY"]
 
 
 '''
-    API call for pool price, helper for above function
+    API call for asset list, helper for above function
 '''
-def poolPrice(startDate, endDate):
+def assetList():
     headers_ = { "Content-Type": "application/json",  "API-Key": API_KEY}
-    
-    url_ = f"https://apimgw.aeso.ca/public/poolprice-api/v1.1/price/poolPrice?startDate={startDate}&endDate={endDate}"
+
+    url_ = f"https://apimgw.aeso.ca/public/assetlist-api/v1/assetlist"
     result = requests.get(url=url_, headers=headers_)
     cont = result.content
-    data = json.loads(cont.decode('utf-8'))["return"]["Pool Price Report"]
-    data = clean_dates(data, "h")
+    data = json.loads(cont.decode('utf-8'))["return"]
+    data = add_index(data)
+    json.dumps(data)
     return data
 
 
@@ -51,9 +52,8 @@ def poolPrice(startDate, endDate):
 
 
 
-
 def main():
-    print(poolPrice("2024-01-01", "2024-01-10"))
+    print(assetList())
 
 
 
